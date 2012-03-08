@@ -44,6 +44,9 @@ app.router.get(/((\w|.)*)/, function () {
   }
   // Otherwise, add the ending words.
   else {
+    // Capitalize the first word.
+    words[0] = razdraz.capitalise(words[0]);
+
     words.push(app.config.get('text:ending'));
   }
 
