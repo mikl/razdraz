@@ -56,7 +56,7 @@ app.router.get(/((\w|.)*)/, function () {
     words.push(app.config.get('text:ending'));
   }
 
-  this.res.writeHead(200, { 'Content-Type': 'text/plain' });
+  this.res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
   this.res.end(words.join(' '));
 });
 
