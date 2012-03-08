@@ -1,7 +1,9 @@
 "use strict";
 
-var flatiron = require('flatiron'),
+var _ = require('underscore'),
+    flatiron = require('flatiron'),
     path = require('path'),
+    razdraz = require('./lib'),
     app = flatiron.app;
 
 app.config.file({ file: path.join(__dirname, 'config', 'config.json') });
@@ -11,16 +13,37 @@ app.config.file({ file: path.join(__dirname, 'config', 'config.json') });
 // the same format.
 app.config.defaults({
   "http": {
+    "domainName": "example.net",
     "server": {
       "port": 7000
     }
+  },
+  "text": {
+    "default": "No data makes a poor example.",
+    "ending": "an example.",
   }
 });
 
 app.use(flatiron.plugins.http);
 
-app.router.get('/', function () {
-  this.res.json({ 'hello': 'world' });
+// This rather ugly route is a catch-all.
+// TODO: Find a better way of defining af default route.
+app.router.get(/((\w|.)*)/, function () {
+  var words = [];
+
+  words = _.union(words, razdraz.processURL(this.req.url));
+
+  // If no words were found, show the default text.
+  if (!words) {
+    words.push(app.config.get('text:default'));
+  }
+  // Otherwise, add the ending words.
+  else {
+    words.push(app.config.get('text:ending'));
+  }
+
+  this.res.writeHead(200, { 'Content-Type': 'text/plain' });
+  this.res.end(words.join(' '));
 });
 
 app.start(app.config.get('http:server:port'));
