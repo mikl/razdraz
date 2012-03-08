@@ -33,6 +33,11 @@ app.router.get(/((\w|.)*)/, function () {
 
   words = _.union(words, razdraz.processURL(this.req.url));
 
+  // Remove empty strings.
+  words = _.filter(words, function (word) {
+    return (word.length > 0);
+  });
+
   // If no words were found, show the default text.
   if (!words) {
     words.push(app.config.get('text:default'));
