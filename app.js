@@ -19,8 +19,10 @@ app.config.defaults({
     }
   },
   "text": {
+    "bannedWords": [ 'dippenade' ],
     "default": "No data makes a poor example.",
     "ending": "an example.",
+    "refusal": "Nuh, uh." // For when banned words are entered.
   }
 });
 
@@ -41,6 +43,10 @@ app.router.get(/((\w|.)*)/, function () {
   // If no words were found, show the default text.
   if (!words) {
     words.push(app.config.get('text:default'));
+  }
+  else if (_.intersection(words, app.config.get('text:bannedWords')).length > 0) {
+    app.log.warn('Banned word found', words);
+    words = [app.config.get('text:refusal')];
   }
   // Otherwise, add the ending words.
   else {
