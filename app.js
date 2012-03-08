@@ -41,7 +41,7 @@ app.router.get(/((\w|.)*)/, function () {
   });
 
   // If no words were found, show the default text.
-  if (!words) {
+  if (words.length < 1) {
     words.push(app.config.get('text:default'));
   }
   else if (_.intersection(words, app.config.get('text:bannedWords')).length > 0) {
