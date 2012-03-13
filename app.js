@@ -23,6 +23,7 @@ app.config.defaults({
     "default": "No data makes a poor example.",
     "ending": "an example.",
     "footer": "Powered by Razdraz",
+    "language": "en",
     "refusal": "Nuh, uh." // For when banned words are entered.
   }
 });
