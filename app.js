@@ -22,6 +22,7 @@ app.config.defaults({
     "bannedWords": [ 'dippenade' ],
     "default": "No data makes a poor example.",
     "ending": "an example.",
+    "footer": "Powered by Razdraz",
     "refusal": "Nuh, uh." // For when banned words are entered.
   }
 });
@@ -56,8 +57,8 @@ app.router.get(/((\w|.)*)/, function () {
     words.push(app.config.get('text:ending'));
   }
 
-  this.res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
-  this.res.end(words.join(' '));
+  this.res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+  this.res.end(razdraz.page(words));
 });
 
 app.start(app.config.get('http:server:port'));
