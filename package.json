@@ -15,6 +15,7 @@
   "dependencies": {
     "flatiron": "0.1.x",
     "jade": "0.21.x",
+    "monolith": "0.2.x",
     "underscore": "1.3.x",
     "union": "0.1.x"
   },

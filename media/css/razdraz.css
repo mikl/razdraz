@@ -1,0 +1,13 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+#message {
+  font-size: 500%;
+  font-weight: bold;
+}
+
+#footer {
+  color: #aaa;
+}
