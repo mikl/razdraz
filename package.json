@@ -24,6 +24,12 @@
     "vows": "0.6.x"
   },
   "optionalDependencies": {},
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/mikl/razdraz/master/LICENSE"
+    }
+  ],
   "scripts": {
     "test": "vows --spec",
     "start": "node app.js"
