@@ -22,7 +22,7 @@ app.config.defaults({
     "bannedWords": [ 'dippenade' ],
     "default": "No data makes a poor example.",
     "ending": "an example.",
-    "footer": 'Powered by <a href="https://github.com/mikl/razdraz">Razdraz</a>, created by the friendly folks at <a href="http://revealit.dk/">Reveal IT</a>',
+    "footer": 'Powered by <a href="https://github.com/mikl/razdraz">Razdraz</a>, created by the friendly folks at <a href="http://revealit.dk/">Reveal IT</a>.',
     "language": "en",
     "refusal": "Nuh, uh." // For when banned words are entered.
   }
